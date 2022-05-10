@@ -148,11 +148,9 @@ def hello_world() -> None:
 
 from typing import NoReturn
 
-
 def raise_exception(exception: Exception) -> NoReturn:
     print(f"{exception.__class__.__name__} was thrown!")
     raise exception
-
 
 try:
     raise_exception(ValueError())
@@ -281,7 +279,6 @@ mobile_y: ProductDict = {"name": "MobileY"}  # Warning, all keys are expected by
 
 # All keys must be valid identifiers
 
-
 class ProductClass(TypedDict):
     name: str
     price: float
@@ -294,17 +291,14 @@ mobile_x_alt["brand"] = "XCo"  # Warning - brand is not a defined key
 
 # Allowing for optional keys - Only with class syntax
 
-
 class UnpricedProduct(TypedDict, total=False):
     name: str
     price: float
-
 
 mobile_z: UnpricedProduct = {"name": "MobileZ"}  # No Warning
 
 
 # Inheritance
-
 
 class Person(TypedDict):
     name: str
@@ -438,7 +432,6 @@ assert new_car.petrol_price == 5  # Passes - Access instance variable
 
 from dataclasses import dataclass
 
-
 @dataclass
 class Motorbike:
     brand: str
@@ -457,7 +450,6 @@ def double(number: Union[float, List[float]]) -> Union[float, List[float]]:
     if isinstance(number, list):
         return [x * 2 for x in number]
     return number * 2
-
 
 result: float = double(4)  # Warning
 result_2: Union[float, List[float]] = double(4)  # No Warning
@@ -482,12 +474,10 @@ result_alternative_2: FloatOrList = double_alternative(4)  # No Warning
 
 user_input: Union[str, None] = "Admin"
 
-
 def greetings(name: Union[str, None]) -> None:
     if name is None:
         print("No name")
     print(f"Welcome {name}.")
-
 
 greetings(user_input)  # No Warning
 
@@ -500,7 +490,6 @@ greetings(user_input)  # No Warning
 from typing import Optional
 
 user_input_alternative: Optional[str] = "Admin"
-
 
 def greetings_alternative(name: Optional[str]) -> None:
     if name is None:
@@ -818,7 +807,6 @@ test_union = first_typevar_bounded(
 
 
 from abc import ABC
-
 
 @dataclass
 class AbstractStreamingServiceConfig(ABC):
